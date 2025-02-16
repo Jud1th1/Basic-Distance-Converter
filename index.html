@@ -32,5 +32,37 @@
     <div class="container bottom" id="answer">
     	<h2 class="invisible">Answer goes here</h2>
     </div>
+
+<script>
+	document.getElementById('convert').addEventListener('submit', function(event){
+		event.preventDefault(); //keeps form from gettng processed or refreshed
+
+		//capture data that user puts in
+		//var distance = document.getElementById('distance').value;
+		//distance = parseFloat(distance); //used to parse a string and return a afloating point number.
+		//let's combine the two statments 
+		var distance = parseFloat(document.getElementById('distance').value);
+
+		var answer = document.getElementById('answer');
+
+		//check to see if distance contains a number. 
+		if(distance){
+			//var conversion = distance * 1.609344;
+			//convert 
+			//var roundedConversion = (Math.round(conversion *1000))/1000; //round our number but with a few decimals
+			//also we put our parenthesis in front of the divison because we want to make sure it converts first then rounds the decimals
+			//or you can use toFixed to make sure it rounds to 3 decimal points-> i.e var roundedConversion = conversion.toFixed(3);
+			//alert(roundedConversion);
+			//let's put it all together:
+			var conversion = (distance * 1.609344).toFixed(3);
+			//display
+			answer.innerHTML = `<h2> ${distance} miles converts to ${conversion} kilometers </h2>`;
+		}else{
+			//display error
+			answer.innerHTML = '<h2> Please provide a number </h2>'
+		}
+			
+	});
+</script>
 </body>
 </html>
